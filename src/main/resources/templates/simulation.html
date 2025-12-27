@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${simulation.name}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1 th:text="|Simulation ${simulation.name}|"/>
+<form>
+    <div th:each="garden : ${simulation.gardens}">
+        <h2 th:text="${garden.name}"/>
+        <div th:each="generator : ${garden.generators}">
+            <label th:text="|${generator.name}|"/>
+            <input type="text" th:files="*{generator.count}" th:value="${generator.count}" align=""/>
+        </div>
+    </div>
+</form>
+</body>
+</html>

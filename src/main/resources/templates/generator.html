@@ -5,13 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<form>
+<form action="#" th:action="@{/generator}" th:object="${generator}" method="post">
     <label>Name
-        <input type="text" th:value="${generator.name}"/>
+        <input type="text" th:field="*{name}"/>
     </label>
     <br>
     <label>Count
-        <input type="number" th:value="${generator.count}"/>
+        <input type="number" th:field="*{count}"/>
     </label>
     <br>
     <input type="submit" value="Update"/>

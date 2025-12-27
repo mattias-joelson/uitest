@@ -5,6 +5,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<p th:text="|Generator ${generator.name}: ${generator.count}|"/>
+<form>
+    <label>Name
+        <input type="text" th:value="${generator.name}"/>
+    </label>
+    <br>
+    <label>Count
+        <input type="number" th:value="${generator.count}"/>
+    </label>
+    <br>
+    <input type="submit" value="Update"/>
+</form>
 </body>
 </html>

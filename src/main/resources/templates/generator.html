@@ -16,6 +16,11 @@
     <br>
     <input type="submit" value="Update"/>
 </form>
+<form action="#" th:action="@{/generator}" th:object="${generator}" method="post">
+    <input type="hidden" th:field="*{name}">
+    <input type="hidden" name="count" id="count" th:value="*{count}+1"/>
+    <input type="submit" th:value="*{name} + 1">
+</form>
 <div th:each="g : ${genList}">
     <form action="#" th:action="@{/generator}" th:object="${__${g.name}__}" method="post">
         <input type="hidden" th:field="*{name}"/>

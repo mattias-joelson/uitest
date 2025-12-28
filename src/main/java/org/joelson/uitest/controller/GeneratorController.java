@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class GeneratorController {
 
@@ -14,6 +16,7 @@ public class GeneratorController {
     @GetMapping("/generator")
     public String generator(Model model) {
         model.addAttribute("generator", this.generator = defaultGenerator());
+        createGeneratorList(model);
         return "generator";
     }
 
@@ -26,10 +29,19 @@ public class GeneratorController {
             generator = that;
         }
         model.addAttribute("generator", generator);
+        createGeneratorList(model);
         return "generator";
     }
 
     private static Generator defaultGenerator() {
         return new Generator("Default Name", 4711);
+    }
+
+    private static void createGeneratorList(Model model) {
+        List<Generator> list = List.of(new Generator("Foo", 1), new Generator("Bar", 2), new Generator("Buz", 3));
+        model.addAttribute("genList", list);
+        for (Generator generator : list) {
+            model.addAttribute(generator.getName(), generator);
+        }
     }
 }

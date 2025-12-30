@@ -6,14 +6,16 @@
 </head>
 <body>
 <h1 th:text="|Simulation ${simulation.name}|"/>
-<form>
-    <div th:each="garden : ${simulation.gardens}">
-        <h2 th:text="${garden.name}"/>
-        <div th:each="generator : ${garden.generators}">
-            <label th:text="|${generator.name}|"/>
-            <input type="text" th:files="*{generator.count}" th:value="${generator.count}" align=""/>
-        </div>
+<div th:each="garden : ${simulation.gardens}">
+    <h2 th:text="${garden.name}"/>
+    <div th:each="generator : ${garden.generators}">
+        <form action="#" th:action="@{/simulation}" th:object="${buy}" method="post">
+            <p th:text="${generator.name}"/>
+            <input type="hidden" name="what" id="what" th:value="${generator.name}">
+            <label for="arg">Generator</label><input type="number" name="arg" id="arg" th:value="${generator.count}">
+            <input type="submit">
+        </form>
     </div>
-</form>
+</div>
 </body>
 </html>
